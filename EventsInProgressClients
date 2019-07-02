@@ -1,0 +1,18 @@
+ActiveClients1 = 
+CALCULATE (
+    DISTINCTCOUNT ( Table1[ID]),
+    GENERATE (
+        VALUES ('Date'[Date]),
+        FILTER (
+            Table1, 
+            CONTAINS (
+                DATESBETWEEN (
+                    'Date'[Date],
+                    Table1[Start Date],
+                    Table1[End Date]
+                ),
+                [Date], 'Date'[Date]
+            )
+        )
+    )
+)
